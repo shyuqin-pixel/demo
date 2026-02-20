@@ -1,4 +1,4 @@
-/* ===== 變數與基礎 ===== */
+/* ===== 变量与基础 ===== */
 :root {
   --font: 'Plus Jakarta Sans', -apple-system, sans-serif;
   --radius: 14px;
@@ -40,7 +40,7 @@ body {
   padding-bottom: 3rem;
 }
 
-/* ===== 頁首 ===== */
+/* ===== 页首 ===== */
 .header {
   text-align: center;
   margin-bottom: 1.5rem;
@@ -59,7 +59,7 @@ body {
   margin-top: 0.25rem;
 }
 
-/* ===== 摘要區 ===== */
+/* ===== 摘要区 ===== */
 .summary {
   display: flex;
   flex-direction: column;
@@ -113,7 +113,7 @@ body {
   font-weight: 600;
 }
 
-/* ===== 表單 ===== */
+/* ===== 表单 ===== */
 .form-section {
   margin-bottom: 1.5rem;
 }
@@ -228,7 +228,7 @@ body {
   background: #0f766e;
 }
 
-/* ===== 記錄列表 ===== */
+/* ===== 记录列表 ===== */
 .records-section {
   background: var(--surface);
   padding: 1.25rem 1.5rem;
@@ -348,7 +348,7 @@ body {
   display: none;
 }
 
-/* ===== 響應式：較大螢幕 ===== */
+/* ===== 响应式：较大屏幕 ===== */
 @media (min-width: 600px) {
   .app {
     padding: 2rem;
@@ -384,7 +384,7 @@ body {
   }
 }
 
-/* ===== 響應式：小螢幕 ===== */
+/* ===== 响应式：小屏幕 ===== */
 @media (max-width: 380px) {
   .app {
     padding: 1rem;

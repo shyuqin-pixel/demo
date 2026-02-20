@@ -31,7 +31,7 @@
   }
 
   function formatMoney(n) {
-    return Number(n).toLocaleString('zh-TW', {
+    return Number(n).toLocaleString('zh-CN', {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2
     });
@@ -90,7 +90,7 @@
         '<span class="record-amount ' + record.type + '">' +
           (record.type === 'income' ? '+' : '-') + formatMoney(record.amount) +
         '</span>' +
-        '<button type="button" class="record-delete" aria-label="刪除">×</button>';
+        '<button type="button" class="record-delete" aria-label="删除">×</button>';
       $recordsList.appendChild(li);
     });
 
