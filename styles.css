@@ -1,0 +1,405 @@
+/* ===== 變數與基礎 ===== */
+:root {
+  --font: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  --radius: 14px;
+  --radius-sm: 8px;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  --shadow-hover: 0 8px 28px rgba(0, 0, 0, 0.1);
+  --income: #0d9488;
+  --income-bg: rgba(13, 148, 136, 0.12);
+  --expense: #dc2626;
+  --expense-bg: rgba(220, 38, 38, 0.12);
+  --balance: #1e293b;
+  --balance-bg: rgba(30, 41, 59, 0.08);
+  --surface: #ffffff;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --transition: 0.2s ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+.app {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  padding-bottom: 3rem;
+}
+
+/* ===== 頁首 ===== */
+.header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+/* ===== 摘要區 ===== */
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.summary-card {
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  transition: box-shadow var(--transition);
+}
+
+.summary-card:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+.summary-card.balance {
+  background: var(--balance-bg);
+  border: 1px solid var(--border);
+}
+
+.summary-card.balance .summary-value {
+  color: var(--balance);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.summary-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.summary-card.income .summary-value { color: var(--income); }
+.summary-card.expense .summary-value { color: var(--expense); }
+
+.summary-label {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 0.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.summary-value {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+/* ===== 表單 ===== */
+.form-section {
+  margin-bottom: 1.5rem;
+}
+
+.record-form {
+  background: var(--surface);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.form-row {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.radio-group {
+  flex: 1;
+  cursor: pointer;
+}
+
+.radio-group input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: 2px solid var(--border);
+  transition: border-color var(--transition), background var(--transition);
+}
+
+.radio-group input:checked + .radio-label.income {
+  border-color: var(--income);
+  background: var(--income-bg);
+  color: var(--income);
+}
+
+.radio-group input:checked + .radio-label.expense {
+  border-color: var(--expense);
+  background: var(--expense-bg);
+  color: var(--expense);
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font);
+  font-size: 1rem;
+  background: var(--surface);
+  color: var(--text);
+  transition: border-color var(--transition);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--income);
+}
+
+.form-group input::placeholder {
+  color: var(--text-muted);
+}
+
+.btn {
+  width: 100%;
+  padding: 0.85rem 1.25rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: var(--font);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition), transform 0.1s ease;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  background: var(--income);
+  color: white;
+  margin-top: 0.25rem;
+}
+
+.btn-primary:hover {
+  background: #0f766e;
+}
+
+/* ===== 記錄列表 ===== */
+.records-section {
+  background: var(--surface);
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.records-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.records-header h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.filter-group {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.filter-btn {
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-family: var(--font);
+  font-size: 0.8rem;
+  font-weight: 500;
+  background: var(--surface);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: border-color var(--transition), background var(--transition), color var(--transition);
+}
+
+.filter-btn:hover {
+  border-color: var(--text-muted);
+  color: var(--text);
+}
+
+.filter-btn.active {
+  border-color: var(--income);
+  background: var(--income-bg);
+  color: var(--income);
+}
+
+.records-list {
+  list-style: none;
+}
+
+.record-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--border);
+  gap: 0.75rem;
+}
+
+.record-item:last-child {
+  border-bottom: none;
+}
+
+.record-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.record-note {
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 0.2rem;
+}
+
+.record-meta {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.record-amount {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.record-amount.income { color: var(--income); }
+.record-amount.expense { color: var(--expense); }
+
+.record-delete {
+  padding: 0.4rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  transition: color var(--transition), background var(--transition);
+}
+
+.record-delete:hover {
+  color: var(--expense);
+  background: var(--expense-bg);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.empty-state.hidden {
+  display: none;
+}
+
+/* ===== 響應式：較大螢幕 ===== */
+@media (min-width: 600px) {
+  .app {
+    padding: 2rem;
+  }
+
+  .header {
+    margin-bottom: 2rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .summary {
+    margin-bottom: 2rem;
+  }
+
+  .summary-card {
+    padding: 1.5rem;
+  }
+
+  .summary-card.balance .summary-value {
+    font-size: 1.75rem;
+  }
+
+  .form-section,
+  .records-section {
+    margin-bottom: 2rem;
+  }
+
+  .record-form {
+    padding: 1.75rem;
+  }
+}
+
+/* ===== 響應式：小螢幕 ===== */
+@media (max-width: 380px) {
+  .app {
+    padding: 1rem;
+  }
+
+  .summary-row {
+    grid-template-columns: 1fr;
+  }
+
+  .records-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-group {
+    justify-content: center;
+  }
+}
